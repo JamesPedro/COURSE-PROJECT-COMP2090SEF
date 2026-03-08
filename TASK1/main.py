@@ -21,4 +21,5 @@ class Income(Transaction):
 
 class Expense(Transaction):  
     def get_description(self):  
+
         return f"Expense: -${self.amount} on {self.category}"
