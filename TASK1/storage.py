@@ -1,7 +1,7 @@
 import json
 
 class DataStorage:
-    def save(self, manager, filename='finance_data.json'):
+    def save(self, manager, filename='finance_data.json'):                 # saves all transactions and budgets to JSON file
         data = {
             'transactions': [],
             'budgets': {}
@@ -17,7 +17,7 @@ class DataStorage:
         with open(filename, 'w') as f:
             json.dump(data, f)
 
-    def load(self, manager, filename='finance_data.json'):
+    def load(self, manager, filename='finance_data.json'):                  # loads data back and recreates objects
         try:
             with open(filename, 'r') as f:
                 data = json.load(f)
