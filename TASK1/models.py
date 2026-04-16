@@ -8,12 +8,12 @@ class Transaction:
         pass  
 
 
-class Income(Transaction):
+class Income(Transaction):                      # Inheritance
     def get_description(self):
         return "Income: +" + str(self.amount) + " from " + self.category
 
 
-class Expense(Transaction):
+class Expense(Transaction):                     # Inheritance
     def get_description(self):
         return "Expense: -" + str(self.amount) + " on " + self.category
 
