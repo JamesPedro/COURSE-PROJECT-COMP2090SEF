@@ -1,32 +1,32 @@
 from abc import ABC, abstractmethod
 import datetime
 
-class Transaction(ABC):  # Abstraction
+class Transaction(ABC):  
     def __init__(self, amount: float, category: str, date=None):
-        self.__amount = amount          # Encapsulation (private attribute)
+        self.__amount = amount          
         self.category = category
         self.date = date or datetime.date.today()
 
     @property
-    def amount(self):                   # Getter (encapsulation)
+    def amount(self):                   
         return self.__amount
 
     @abstractmethod
-    def get_description(self):          # Polymorphism setup
+    def get_description(self):          
         pass
 
 
-class Income(Transaction):              # Inheritance
-    def get_description(self):          # Polymorphism
+class Income(Transaction):              
+    def get_description(self):          
         return f"Income: +${self.amount:.2f} from {self.category} ({self.date})"
 
 
-class Expense(Transaction):             # Inheritance
-    def get_description(self):          # Polymorphism
+class Expense(Transaction):           
+    def get_description(self):         
         return f"Expense: -${self.amount:.2f} on {self.category} ({self.date})"
 
 
-class Budget:                           # Separate class for composition
+class Budget:                          
     def __init__(self, category: str, limit: float):
         self.category = category
         self.limit = limit
