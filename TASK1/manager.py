@@ -1,19 +1,19 @@
 from models import Income, Expense, Budget
 
-class FinanceManager:
+class FinanceManager:                        # Creates the main class that controls everything.
     def __init__(self):
-        self.transactions = []
-        self.budgets = {}
+        self.transactions = []               # list of Transaction objects
+        self.budgets = {}                    # dictionary of Budget objects
 
     def add_transaction(self, transaction):
         self.transactions.append(transaction)
-        if isinstance(transaction, Expense) and transaction.category in self.budgets:
+        if isinstance(transaction, Expense) and transaction.category in self.budgets:        # it is an Expense and we have a budget for that category, automatically update the spent amount.
             self.budgets[transaction.category].add_spending(transaction.amount)
 
     def set_budget(self, category, limit):
         self.budgets[category] = Budget(category, limit)
 
-    def generate_report(self):
+    def generate_report(self):               # calculates total income, expenses and net balance
         total_income = 0
         total_expense = 0
         for t in self.transactions:
@@ -30,7 +30,7 @@ class FinanceManager:
             result.append(t.get_description())
         return result
 
-    def check_budgets(self):
+    def check_budgets(self):                # Checks every budget. If overspent, adds a warning message.
         alerts = []
         for cat, b in self.budgets.items():
             remaining = b.get_remaining()
