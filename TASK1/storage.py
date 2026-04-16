@@ -3,7 +3,6 @@ import datetime
 from models import Income, Expense
 
 class DataStorage:
-    """Handles saving and loading data (separate module for modularity)"""
     def save(self, manager, filename='finance_data.json'):
         data = {
             'transactions': [],
