@@ -1,7 +1,7 @@
 # Personal Finance Tracker
 
 **Course Project - Task 1 (OOP-based Application Development)**  
-**COMP2090SEF / COMP8090SEF**  
+**COMP2090SEF**  
 **Hong Kong Metropolitan University (HKMU)**  
 **2026 Spring Semester**  
 
