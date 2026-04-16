@@ -5,7 +5,7 @@ from storage import DataStorage
 def main():
     manager = FinanceManager()
     storage = DataStorage()
-    storage.load(manager)                     # Load previous data if exists
+    storage.load(manager)                     
 
     print("=== Personal Finance Tracker ===\n")
 
