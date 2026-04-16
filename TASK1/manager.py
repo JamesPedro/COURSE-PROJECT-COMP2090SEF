@@ -2,32 +2,40 @@ from models import Income, Expense, Budget
 
 class FinanceManager:
     def __init__(self):
-        self.transactions = []          
-        self.budgets = {}               
+        self.transactions = []
+        self.budgets = {}
 
     def add_transaction(self, transaction):
         self.transactions.append(transaction)
         if isinstance(transaction, Expense) and transaction.category in self.budgets:
             self.budgets[transaction.category].add_spending(transaction.amount)
 
-    def set_budget(self, category: str, limit: float):
+    def set_budget(self, category, limit):
         self.budgets[category] = Budget(category, limit)
 
-    def generate_report(self) -> str:
-        total_income = sum(t.amount for t in self.transactions if isinstance(t, Income))
-        total_expense = sum(t.amount for t in self.transactions if isinstance(t, Expense))
-        return (f"Total Income : ${total_income:.2f}\n"
-                f"Total Expenses: ${total_expense:.2f}\n"
-                f"Net Balance  : ${total_income - total_expense:.2f}")
+    def generate_report(self):
+        total_income = 0
+        total_expense = 0
+        for t in self.transactions:
+            if isinstance(t, Income):
+                total_income = total_income + t.amount
+            if isinstance(t, Expense):
+                total_expense = total_expense + t.amount
+        net = total_income - total_expense
+        return "Total Income : " + str(total_income) + "\nTotal Expenses: " + str(total_expense) + "\nNet Balance  : " + str(net)
 
-    def list_transactions(self) -> list:
-        return [t.get_description() for t in self.transactions]
+    def list_transactions(self):
+        result = []
+        for t in self.transactions:
+            result.append(t.get_description())
+        return result
 
-    def check_budgets(self) -> list:
+    def check_budgets(self):
         alerts = []
-        for cat, budget in self.budgets.items():
-            remaining = budget.get_remaining()
+        for cat, b in self.budgets.items():
+            remaining = b.get_remaining()
             if remaining < 0:
-                alerts.append(f"⚠️  OVER BUDGET in {cat}! "
-                              f"Spent ${budget.spent:.2f} / ${budget.limit:.2f}")
-        return alerts or ["✅ All budgets are on track!"]
+                alerts.append("OVER BUDGET in " + cat + "! Spent " + str(b.spent) + " / " + str(b.limit))
+        if alerts == []:
+            alerts.append("All budgets are on track!")
+        return alerts
