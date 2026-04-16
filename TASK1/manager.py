@@ -2,8 +2,8 @@ from models import Income, Expense, Budget
 
 class FinanceManager:
     def __init__(self):
-        self.transactions = []          # List of Transaction objects
-        self.budgets = {}               # Composition: category -> Budget object
+        self.transactions = []          
+        self.budgets = {}               
 
     def add_transaction(self, transaction):
         self.transactions.append(transaction)
