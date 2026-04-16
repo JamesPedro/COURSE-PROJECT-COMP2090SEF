@@ -5,11 +5,11 @@ from storage import DataStorage
 def main():
     manager = FinanceManager()
     storage = DataStorage()
-    storage.load(manager)                     
+    storage.load(manager)               # load old data                
 
     print("=== Personal Finance Tracker ===\n")
 
-    while True:
+    while True:                         # the menu loop
         print("\n1. Add Income")
         print("2. Add Expense")
         print("3. Set Budget")
