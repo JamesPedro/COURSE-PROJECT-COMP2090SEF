@@ -1,39 +1,31 @@
-from abc import ABC, abstractmethod
-import datetime
-
-class Transaction(ABC):  
-    def __init__(self, amount: float, category: str, date=None):
-        self.__amount = amount          
+class Transaction:
+    def __init__(self, amount, category, date=None):
+        self.amount = amount
         self.category = category
-        self.date = date or datetime.date.today()
+        self.date = date   
 
-    @property
-    def amount(self):                   
-        return self.__amount
-
-    @abstractmethod
-    def get_description(self):          
-        pass
+    def get_description(self):
+        pass  
 
 
-class Income(Transaction):              
-    def get_description(self):          
-        return f"Income: +${self.amount:.2f} from {self.category} ({self.date})"
+class Income(Transaction):
+    def get_description(self):
+        return "Income: +" + str(self.amount) + " from " + self.category
 
 
-class Expense(Transaction):           
-    def get_description(self):         
-        return f"Expense: -${self.amount:.2f} on {self.category} ({self.date})"
+class Expense(Transaction):
+    def get_description(self):
+        return "Expense: -" + str(self.amount) + " on " + self.category
 
 
-class Budget:                          
-    def __init__(self, category: str, limit: float):
+class Budget:
+    def __init__(self, category, limit):
         self.category = category
         self.limit = limit
-        self.spent = 0.0
+        self.spent = 0
 
-    def add_spending(self, amount: float):
-        self.spent += amount
+    def add_spending(self, amount):
+        self.spent = self.spent + amount
 
-    def get_remaining(self) -> float:
+    def get_remaining(self):
         return self.limit - self.spent
