@@ -7,7 +7,7 @@
 
 ---
 
-## 📋 Project Description
+## Project Description
 
 This is a **simple console-based Personal Finance Tracker**.  
 
@@ -18,7 +18,7 @@ The program is built using **basic Object-Oriented Programming (OOP)** concepts 
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 - Add Income and Expense transactions  
 - Set monthly budget for each category  
@@ -29,7 +29,7 @@ The program is built using **basic Object-Oriented Programming (OOP)** concepts 
 
 ---
 
-## 🧩 OOP Concepts Used (Following Lecture Note 2)
+## OOP Concepts Used (Following Lecture Note 2)
 
 This project demonstrates **all the core OOP concepts** taught in the course:
 
@@ -44,7 +44,7 @@ This project demonstrates **all the core OOP concepts** taught in the course:
 | Modular Programming      | 4 separate Python files                             | Whole project|
 
 ---
-# 🚀 How to Run (User Guide)
+# How to Run (User Guide)
 
 ### Step-by-step Instructions
 
