@@ -1,4 +1,4 @@
-from models import Income, Expense
+from models import Income, Expense     # import the classes from other modules
 from manager import FinanceManager
 from storage import DataStorage
 
@@ -19,7 +19,7 @@ def main():
         print("7. Save & Exit")
         choice = input("Choose an option (1-7): ")
 
-        if choice == '1':
+        if choice == '1':               # diffrents choices between 1-7
             amt = float(input("Amount: "))
             cat = input("Category (e.g. Salary): ")
             manager.add_transaction(Income(amt, cat))
